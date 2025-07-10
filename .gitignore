@@ -1,0 +1,26 @@
+# Ignorar entornos virtuales
+venv/
+
+# Archivos compilados
+__pycache__/
+*.pyc
+
+# Configuraciones del sistema
+.DS_Store
+*.log
+
+# Jupyter notebooks temporales
+.ipynb_checkpoints/
+
+# Modelos entrenados (puedes versionarlos manualmente si lo deseas)
+*.pkl
+*.joblib
+
+# Archivos de entorno
+.env
+
+# Archivos historicos
+*.csv
+
+# Archivos JSON
+*.json
