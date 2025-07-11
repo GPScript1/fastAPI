@@ -76,4 +76,4 @@ def generar_features(data):
         })
 
     df_resultado = pd.DataFrame(registros)
-    df_resultado.to_csv(f'comercializaciones_{data}.csv', index=False)
+    df_resultado.to_csv(f'../data/comercializaciones_data.csv', index=False)

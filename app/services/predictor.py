@@ -1,6 +1,6 @@
 import joblib
 from datetime import datetime
-from app.services.preprocess import generar_features
+from app.services.preprocessing import generar_features
 
 modelo = None
 fecha_entrenamiento = None

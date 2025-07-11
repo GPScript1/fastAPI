@@ -18,3 +18,10 @@ class PredictRequest(BaseModel):
     fecha_inicio: date
     estados: List[Estado]
     facturas: List[Factura]
+    
+class Comercializacion(BaseModel):
+    nombreEnte: str
+    promedioInicioComFinCom: int
+    promedioFinComInicioFactura: int
+    promedioInicioFacturaFinPagado: int
+    promedioInicioComFinPagado: int
