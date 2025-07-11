@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import date
 
@@ -20,8 +20,10 @@ class PredictRequest(BaseModel):
     facturas: List[Factura]
     
 class Comercializacion(BaseModel):
-    nombreEnte: str
-    promedioInicioComFinCom: int
-    promedioFinComInicioFactura: int
-    promedioInicioFacturaFinPagado: int
-    promedioInicioComFinPagado: int
+    nombreEnte: str = Field(..., alias="NombreEnte")
+    promedioInicioComFinCom: int = Field(..., alias="PromedioInicioComFinCom")
+    promedioFinComInicioFactura: int = Field(..., alias="PromedioFinComInicioFactura")
+    promedioInicioFacturaFinPagado: int = Field(..., alias="PromedioInicioFacturaFinPagado")
+    promedioInicioComFinPagado: int = Field(..., alias="PromedioInicioComFinPagado")
+    class Config:
+        allow_population_by_field_name = True

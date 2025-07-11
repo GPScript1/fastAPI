@@ -1,5 +1,5 @@
 # app/api/routes.py
-from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi import APIRouter, Body, Depends, HTTPException, Header
 from app.core.security import verificar_api_key
 from app.schemas.request import PredictRequest, Comercializacion
 from app.schemas.response import PredictResponse, ModelStatusResponse
@@ -43,6 +43,5 @@ def delete_data():
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/ping", dependencies=[Depends(verificar_api_key)])
-def ping(data: list[Comercializacion]):
-    listWithData = data
-    return {"data": listWithData}
+def ping(data: list[Comercializacion] = Body(...)):
+    return data
