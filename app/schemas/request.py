@@ -28,3 +28,27 @@ class SujetosPromedioValor(BaseModel):
     valorTotalComercializaciones: int = Field(..., alias="ValorTotalComercializaciones")
     class Config:
         allow_population_by_field_name = True
+class ClientePromedio(BaseModel):
+    nombreEnte: str = Field(..., alias="NombreEnte")
+    promedioInicioComFinCom: int = Field(..., alias="PromedioInicioComFinCom")
+    promedioFinComInicioFactura: int = Field(..., alias="PromedioFinComInicioFactura")
+    promedioInicioFacturaFinPagado: int = Field(..., alias="PromedioInicioFacturaFinPagado")
+    promedioInicioComFinPagado: int = Field(..., alias="PromedioInicioComFinPagado")
+    cantidadComercializaciones: int = Field(..., alias="CantidadComercializaciones")
+    valorTotalComercializaciones: int = Field(..., alias="ValorTotalComercializaciones")
+    class Config:
+        allow_population_by_field_name = True
+class Comercializaciones(BaseModel):
+    nombreEnte: str = Field(..., alias="NombreEnte")
+    diasInicioComFinCom: int = Field(..., alias="DiasInicioComFinCom")
+    diasFinComInicioFactura: int = Field(..., alias="DiasFinComInicioFactura")
+    diasInicioFacturaFinPagado: int = Field(..., alias="DiasInicioFacturaFinPagado")
+    diasInicioComFinPagado: int = Field(..., alias="DiasInicioComFinPagado")
+    valorComercializacion: int = Field(..., alias="ValorComercializacion")
+    class Config:
+        allow_population_by_field_name = True
+class PrediccionInput(BaseModel):
+    clientePromedio: List[ClientePromedio] = Field(..., alias="ClientePromedio")
+    comercializaciones: List[Comercializaciones] = Field(..., alias="Comercializaciones")
+    class Config:
+        allow_population_by_field_name = True
