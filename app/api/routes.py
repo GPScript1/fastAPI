@@ -1,9 +1,10 @@
 # app/api/routes.py
 from fastapi import APIRouter, Body, Depends, HTTPException, Header
 from app.core.security import verificar_api_key
-from app.schemas.request import PredictRequest, Comercializacion
+from app.schemas.request import PredictRequest, SujetosPromedioValor
 from app.schemas.response import PredictResponse, ModelStatusResponse
 from app.services.predictor import predict_payment_time, train_model, get_model_status, delete_training_data
+from app.services.classificator import cluster_classify
 
 router = APIRouter()
 
@@ -43,5 +44,13 @@ def delete_data():
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/ping", dependencies=[Depends(verificar_api_key)])
-def ping(data: list[Comercializacion] = Body(...)):
+def ping(data: list[SujetosPromedioValor] = Body(...)):
     return data
+
+@router.post("/cluster", dependencies=[Depends(verificar_api_key)])
+def cluster(data: list[SujetosPromedioValor] = Body(...)):
+    try:
+        json_data = cluster_classify(data)
+        return json_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

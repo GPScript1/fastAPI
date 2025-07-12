@@ -18,12 +18,13 @@ class PredictRequest(BaseModel):
     fecha_inicio: date
     estados: List[Estado]
     facturas: List[Factura]
-    
-class Comercializacion(BaseModel):
+class SujetosPromedioValor(BaseModel):
     nombreEnte: str = Field(..., alias="NombreEnte")
     promedioInicioComFinCom: int = Field(..., alias="PromedioInicioComFinCom")
     promedioFinComInicioFactura: int = Field(..., alias="PromedioFinComInicioFactura")
     promedioInicioFacturaFinPagado: int = Field(..., alias="PromedioInicioFacturaFinPagado")
     promedioInicioComFinPagado: int = Field(..., alias="PromedioInicioComFinPagado")
+    cantidadComercializaciones: int = Field(..., alias="CantidadComercializaciones")
+    valorTotalComercializaciones: int = Field(..., alias="ValorTotalComercializaciones")
     class Config:
         allow_population_by_field_name = True
