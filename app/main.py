@@ -1,7 +1,9 @@
 from fastapi import FastAPI
-from app.api.routes import router as api_router
+from app.api.routes import router
+from dotenv import load_dotenv
+import os
 
-app = FastAPI(title = "GPScript API",
-              description = "API para interactuar con el modelo de GPScript")
+load_dotenv()
 
-app.include_router(api_router)
+app = FastAPI(title="Modelo Predictivo Insecap")
+app.include_router(router)
